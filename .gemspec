@@ -6,6 +6,6 @@ Gem::Specification.new do |s|
   s.description = 'Takes in a key and cooldown time and can determine if the cooldown time has passed. '
   s.authors     = ['Andrew Kreps']
   s.email       = 'andrew.kreps@gmail.com'
-  s.files       = %w(lib/cinch/plugins/chilly_willy.rb)
+  s.files       = %w(lib/chilly_willy.rb)
   s.homepage    = 'https://github.com/onewheelskyward/chilly-willy'
 end
