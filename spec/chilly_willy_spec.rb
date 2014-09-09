@@ -10,19 +10,19 @@ describe 'ChillyWilly tests' do
 
   it 'stores a cooldown' do
     chilly = ChillyWilly.new('key', 60)
-    expect(chilly.timeleft).to eq(60)
-  end
-
-  it 'tests a cooldown expiration' do
-    chilly = ChillyWilly.new('key', 1)
-    sleep(1)
-    expect(chilly.expired?).to eq(true)
+    expect(chilly.time_to_expire).to eq(60)
   end
 
   it 'tests a cooldown time until expiration' do
     chilly = ChillyWilly.new('key', 10)
     sleep(1)
     expect(chilly.time_to_expire).to eq(9)
+  end
+
+  it 'tests a cooldown expiration' do
+    chilly = ChillyWilly.new('key', 1)
+    sleep(1)
+    expect(chilly.expired?).to eq(true)
   end
 
   it 'expires immediately' do
@@ -34,4 +34,8 @@ describe 'ChillyWilly tests' do
     expect(chilly.time_to_expire).to eq(0)
   end
 
+  it 'gets a utc timestamp' do
+    chilly = ChillyWilly.new('k', 1)
+    expect(chilly.get_current_timestamp).to eq(Time.now.getutc.to_i)
+  end
 end
