@@ -1,10 +1,16 @@
 class ChillyWilly
-  attr_accessor :key, :cooldown, :start_time
+  include DataMapper::Resource
+
+  property :id,         Serial
+  property :boogalooga, String, length: 2000  # Hey, key is a reserved word.
+  property :cooldown,   Integer
+  property :start_time, Integer
 
   def initialize(key, cooldown)
-    self.key = key
+    self.boogalooga = key
     self.cooldown = cooldown
     self.start_time = get_current_timestamp
+    self.save
   end
 
   def expired?
