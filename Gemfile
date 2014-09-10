@@ -1,6 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rspec'
-gem 'simplecov'
+gem 'data_mapper'
+gem 'dm-postgres-adapter'
+gem 'sinatra'
+gem 'json'
 
-gem 'sinatra/base'
+group :test do
+  gem 'rack-test'
+  gem 'rspec'
+  gem 'simplecov'
+end

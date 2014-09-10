@@ -1,4 +1,5 @@
 db: chillywilly
+db_test: chillywilly_test
 db_user:
 db_password:
 db_host: localhost
