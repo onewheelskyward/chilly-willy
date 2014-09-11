@@ -4,6 +4,7 @@ require 'rspec'
 require 'data_mapper'
 require_relative '../lib/chilly_willy'
 require_relative '../app'
+require 'delorean'
 # set :environment, :test
 
 RSpec.configure do |config|

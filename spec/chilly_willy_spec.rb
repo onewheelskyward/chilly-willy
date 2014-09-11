@@ -21,7 +21,7 @@ describe 'ChillyWilly tests' do
     chilly.boogalooga = 'key'
     chilly.cooldown = 10
     chilly.start_time = chilly.get_current_timestamp
-    sleep(1)
+    Delorean.jump 1
     expect(chilly.time_to_expire).to eq(9)
   end
 
@@ -30,7 +30,7 @@ describe 'ChillyWilly tests' do
     chilly.boogalooga = 'key'
     chilly.cooldown = 1
     chilly.start_time = chilly.get_current_timestamp
-    sleep(1)
+    Delorean.jump 1
     expect(chilly.is_expired?).to eq(true)
   end
 
