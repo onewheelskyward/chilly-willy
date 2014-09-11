@@ -29,4 +29,23 @@ class App < Sinatra::Base
     end
   end
 
+  get '/keys/:key/time_to_expire' do
+    cw = ChillyWilly.first(boogalooga: params[:key])
+    if cw
+      cw.time_to_expire.to_json
+    else
+      status 404
+    end
+  end
+
+  post '/keys/:key/expire' do
+    cw = ChillyWilly.first(boogalooga: params[:key])
+    if cw
+      cw.expire
+      cw.save
+    else
+      status 404
+    end
+  end
+
 end

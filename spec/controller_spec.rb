@@ -30,5 +30,22 @@ describe 'Controller tests' do
     expect(bod).to eq('false')
   end
 
+  it 'checks for time_to_expire' do
+    post '/keys', {key: 'thing', cooldown: 60}
+    get '/keys/thing/time_to_expire'
+    bod = last_response.body
+    expect(bod).to eq('60')
+  end
 
+  it 'immediately expires' do
+    post '/keys', {key: 'thing', cooldown: 60}
+    get '/keys/thing/time_to_expire'
+    bod = last_response.body
+    expect(bod).to eq('60')
+    get '/keys/thing/expired'
+    expect(last_response.body).to eq('false')
+    post '/keys/thing/expire'
+    get '/keys/thing/expired'
+    expect(last_response.body).to eq('true')
+  end
 end
